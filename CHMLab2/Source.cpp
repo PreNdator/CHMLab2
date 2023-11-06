@@ -1,5 +1,6 @@
 #include <iostream>
-#include "MatrixLoader.h"
+#include "MatrixIO.h"
+#include "MatrixSolver.h"
 
 int main() {
     std::vector<std::vector<float>> matrix;
@@ -7,19 +8,21 @@ int main() {
 
     std::ifstream inFile("input.txt");
     if (!inFile) {
-        std::cerr << "Error: Unable to open the input file." << std::endl;
+        std::cerr << "Не получилось открыть файл :(" << std::endl;
         return 1;
     }
     MatrixIO::LoadFromFile(inFile, matrix, f);
     inFile.close();
 
+    auto vec = MatrixSolver::GetOnesVector(matrix.size());
+    f = MatrixSolver::Get_f_Vector(matrix, vec);
 
     std::ofstream outFile("output.txt");
     if (!outFile) {
-        std::cerr << "Error: Unable to open the output file." << std::endl;
+        std::cerr << "Не получилось открыть файл :(" << std::endl;
         return 1;
     }
-    MatrixIO::SaveToFile(outFile, matrix, f);
+    MatrixIO::SaveVectorToFile(outFile, MatrixSolver::SolveMatrix(matrix, f));
     outFile.close();
 
 }

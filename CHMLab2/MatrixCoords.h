@@ -12,8 +12,9 @@ namespace MatrixCoords {
 		return std::make_pair(i, newJ);
 	}
 
-	std::pair<int, int> To_NxN_Matrix(int i, int j) {
-		int newJ = j + i;
+	std::pair<int, int> To_B_Matrix(int i, int j, int L) {
+
+		int newJ = j - i + L - 1;
 		return std::make_pair(i, newJ);
 	}
 }

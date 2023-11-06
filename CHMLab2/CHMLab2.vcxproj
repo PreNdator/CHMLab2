@@ -131,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatrixCoords.h" />
-    <ClInclude Include="MatrixLoader.h" />
+    <ClInclude Include="MatrixIO.h" />
     <ClInclude Include="MatrixSolver.h" />
   </ItemGroup>
   <ItemGroup>
